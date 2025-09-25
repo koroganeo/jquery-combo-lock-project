@@ -1,0 +1,62 @@
+$(document).ready(function () {
+  console.log("jQuery is ready");
+  $('.container').css({
+    maxWidth: '1200px',
+    margin: '0 auto',
+    padding: '16px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '25px',
+  });
+  $('input[type="number"]')
+    .css({
+      width: '100%',
+      color: "white",
+      fontSize: "3rem",
+      border: "1px solid black",
+      backgroundColor: "black",
+    })
+    .attr("value", 0);
+  $(".btn").css({
+    backgroundColor: "black",
+    color: "white",
+    width: "160px",
+    fontSize: "1.5rem",
+    padding: "15px",
+    margin: "25px auto 0px",
+    border: "1px solid black",
+    textAlign: "center",
+    borderRadius: "10px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "4px",
+  });
+  $(".output").css({
+    width: '100%',
+    maxWidth: "600px",
+    padding: "15px",
+    backgroundColor: "#333",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "25px",
+  });
+  $(".input-container").css({
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: "25px",
+  });
+  $("small").css({
+    display: 'block',
+    fontSize: "1.2rem",
+    color: "white",
+    textAlign: "center",
+    margin: "0 auto",
+  });
+});
