@@ -1,83 +1,110 @@
 $(document).ready(function () {
   setupUI();
-  $(".output").hide();
-  $("#start").click(startGame);
-  $("#checkLock").click(openLock);
+  $('.output').hide();
+  $('#start').click(startGame);
+  $('#checkLock').click(checkNumber);
+  $('#reset').click(reset);
   let secretNum = '';
 
   function startGame() {
-    secretNum = Math.floor(Math.random() * 900 + 100).toString();
-    $(".output").show();
-    $("#start").hide();
-    $('input[type="number"]').val("7");
-    $('small').html('Red background is low, blue background is high');
+    reset();
   }
 
-  function openLock() {
-    const win = 0;
-
+  function checkNumber() {
+    let win = 0;
     for (let i = 0; i < $('input[type="number"]').length; i++) {
-      console.log(secretNum[i], $('input[type="number"]').eq(i).val());
+      const input = $('input[type="number"]').eq(i);
+      if (secretNum[i] < input.val()) {
+        input.css({ backgroundColor: 'red' });
+      }
+      if (secretNum[i] > input.val()) {
+        input.css({ backgroundColor: 'blue' });
+      }
+      if (secretNum[i] === input.val()) {
+        input.css({ backgroundColor: 'green' });
+        win++;
+      }
     }
+    if (win === 3) {
+      $('small').html("You're correct!");
+      $('#start').show();
+    }
+  }
+
+  function reset() {
+    $('#start').hide();
+    $('.output').show();
+    $('small').html('Red background is low, blue background is high');
+    $('input[type="number"]').css({ backgroundColor: 'black' }).val('7');
+    secretNum = Math.floor(Math.random() * 900 + 100).toString();
   }
 });
 
 function setupUI() {
+  $('h1').css({ textAlign: 'center' });
   $('input[type="number"]').css({
-    width: "100%",
-    color: "white",
-    fontSize: "3rem",
-    border: "1px solid black",
-    backgroundColor: "black",
+    width: '100%',
+    color: 'white',
+    fontSize: '3rem',
+    border: '1px solid black',
+    backgroundColor: 'black',
   });
-  $(".btn").css({
-    backgroundColor: "black",
-    color: "white",
-    width: "160px",
-    fontSize: "1.5rem",
-    padding: "15px",
-    margin: "25px auto 0px",
-    border: "1px solid black",
-    textAlign: "center",
-    borderRadius: "10px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "4px",
+  $('.btn').css({
+    backgroundColor: 'black',
+    color: 'white',
+    width: '160px',
+    fontSize: '1.5rem',
+    padding: '15px',
+    border: '1px solid black',
+    textAlign: 'center',
+    borderRadius: '10px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '4px',
+    userSelect: 'none',
+    cursor: 'pointer',
   });
-  $(".output").css({
-    width: "100%",
-    maxWidth: "600px",
-    padding: "15px",
-    backgroundColor: "#333",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "25px",
+  $('.output').css({
+    width: '100%',
+    maxWidth: '600px',
+    padding: '15px',
+    backgroundColor: '#333',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '16px',
   });
-  $(".input-container").css({
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: "25px",
+  $('.input-container').css({
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: '16px',
   });
-  $("small").css({
-    display: "block",
-    fontSize: "1.2rem",
-    color: "white",
-    textAlign: "center",
-    margin: "0 auto",
+  $('small').css({
+    display: 'block',
+    fontSize: '1.2rem',
+    color: 'white',
+    textAlign: 'center',
+    margin: '0 auto',
   });
-  $(".container").css({
-    maxWidth: "1200px",
-    margin: "0 auto",
-    padding: "16px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "25px",
+  $('.container').css({
+    maxWidth: '1200px',
+    margin: '0 auto',
+    padding: '16px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '25px',
+  });
+  $('.btn-container').css({
+    width: '100%',
+    padding: '16px',
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '20px',
   });
 }
