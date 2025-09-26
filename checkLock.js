@@ -1,13 +1,17 @@
 $(document).ready(function () {
   setupUI();
   $('.output').hide();
-  $('#start').click(startGame);
+  $('#start').click(initGame);
   $('#checkLock').click(checkNumber);
-  $('#reset').click(reset);
+  $('#reset').click(initGame);
   let secretNum = '';
 
-  function startGame() {
-    reset();
+  function initGame() {
+    $('#start').hide();
+    $('.output').show();
+    $('small').html('Red background is low, blue background is high');
+    $('input[type="number"]').css({ backgroundColor: 'black' }).val('7');
+    secretNum = Math.floor(Math.random() * 900 + 100).toString();
   }
 
   function checkNumber() {
@@ -29,14 +33,6 @@ $(document).ready(function () {
       $('small').html("You're correct!");
       $('#start').show();
     }
-  }
-
-  function reset() {
-    $('#start').hide();
-    $('.output').show();
-    $('small').html('Red background is low, blue background is high');
-    $('input[type="number"]').css({ backgroundColor: 'black' }).val('7');
-    secretNum = Math.floor(Math.random() * 900 + 100).toString();
   }
 });
 
