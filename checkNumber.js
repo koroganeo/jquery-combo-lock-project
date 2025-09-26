@@ -1,14 +1,16 @@
 $(document).ready(function () {
-  setupUI();
+  setupHeaderUI();
+  setupNumberUI();
   $('.output').hide();
   $('#start').click(initGame);
-  $('#checkLock').click(checkNumber);
+  $('#checkNumberBtn').click(checkNumber);
   $('#reset').click(initGame);
   let secretNum = '';
 
   function initGame() {
     $('#start').hide();
     $('.output').show();
+    $('#reset').show();
     $('small').html('Red background is low, blue background is high');
     $('input[type="number"]').css({ backgroundColor: 'black' }).val('7');
     secretNum = Math.floor(Math.random() * 900 + 100).toString();
@@ -32,11 +34,45 @@ $(document).ready(function () {
     if (win === 3) {
       $('small').html("You're correct!");
       $('#start').show();
+      $('#reset').hide();
     }
   }
 });
 
-function setupUI() {
+function setupHeaderUI() {
+  $('#header').css({
+    backgroundColor: 'black',
+    color: 'white',
+    maxWidth: '1200px',
+    margin: '0 auto',
+    paddingBlock: '4px',
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '32px',
+    fontSize: '1.5rem',
+    userSelect: 'none',
+  });
+
+  $('.navigation').hover(function () {
+    $(this).css({ textDecoration: 'underline', cursor: 'pointer' });
+  });
+
+  $('.navigation').on('mouseleave', function () {
+    $(this).css({ textDecoration: 'none' });
+  });
+
+  $('#numberGame').click(function () {
+    $('#section-number').show();
+    $('#section-color').hide();
+  });
+
+  $('#colorGame').click(function () {
+    $('#section-color').show();
+    $('#section-number').hide();
+  });
+}
+
+function setupNumberUI() {
   $('h1').css({ textAlign: 'center' });
   $('input[type="number"]').css({
     width: '100%',

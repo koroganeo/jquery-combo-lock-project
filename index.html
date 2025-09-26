@@ -5,25 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="checkLock.js"></script>
+    <script src="checkNumber.js"></script>
+    <script src="pickColor.js"></script>
   </head>
-  <body>
-    <h1>JQuery Combo Lock</h1>
-    <div class="container" style="display: none">
-      <div id="start" class="btn">Start</div>
 
-      <div class="output">
-        <small>Message</small>
-        <div class="input-container">
-          <input type="number" name="lock1" min="0" max="9" />
-          <input type="number" name="lock2" min="0" max="9" />
-          <input type="number" name="lock3" min="0" max="9" />
-        </div>
-        <div class="btn-container">
-          <div id="checkLock" class="btn">Check lock 😎</div>
-          <div id="reset" class="btn">Reset guessing</div>
+  <body>
+    <header id="header">
+      <span class="navigation" id="numberGame">Number game</span>
+      <span class="navigation" id="colorGame">Color game</span>
+    </header>
+
+    <section id="section-number">
+      <h1>JQuery Number Game</h1>
+      <div class="container" style="display: none">
+        <div id="start" class="btn">Start</div>
+
+        <div class="output">
+          <small>Message</small>
+          <div class="input-container">
+            <input type="number" name="inputNumber1" min="0" max="9" />
+            <input type="number" name="inputNumber2" min="0" max="9" />
+            <input type="number" name="inputNumber3" min="0" max="9" />
+          </div>
+          <div class="btn-container">
+            <div id="checkNumberBtn" class="btn">Check lock 😎</div>
+            <div id="reset" class="btn">Reset guessing</div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <section id="section-color"></section>
   </body>
 </html>
